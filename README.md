@@ -13,7 +13,7 @@
 ![image](https://github.com/hejustbrave/GMapDownloader/assets/45898487/5d9eb486-7d8e-4c13-a49c-b2adfcad2d6f)  
 
 ## 框架及依赖  
-.net desktop framework 6.0.25
+.net desktop framework 6.0.25  
 GMap.net2.1.6  
 
 ## 说明  
