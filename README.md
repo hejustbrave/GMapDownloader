@@ -1,5 +1,6 @@
 # GMapDownloader  
 这是一款用于爬取高德地图瓦片、瓦片拼接的小工具。  
+用Microsoft Visual Studio Installer 2022打包的安装包已上传至release  
 ![image](https://github.com/hejustbrave/GMapDownloader/assets/45898487/20406c65-09df-402d-a020-df722123b1a9)
   
 ## 操作  
