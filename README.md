@@ -5,12 +5,17 @@
   
 ## 操作  
 ### 爬取  
-点击框选后，在图中任意点击两点构造矩形范围，同时右侧显示框线的瓦片范围及瓦片数量。  
-在存在矩形范围时，爬取级别可手动选择，以爬取当前范围内希望获取的瓦片。  
+####参数1.爬取级别
+可手动选择或缩放底图自动选择
+####参数2.瓦片范围
+可直接填写经纬度范围或框选获得瓦片范围。点击框选后，在图中任意点击两点构造框选范围盒，同时右侧显示框线的瓦片范围。  
+
+根据上述两个参数进行爬取
 ![image](https://github.com/hejustbrave/GMapDownloader/assets/45898487/bb4e6b1b-23b9-4f65-aa2f-842f5e68df15)  
 选择输出路径，点击爬取。  
 ![image](https://github.com/hejustbrave/GMapDownloader/assets/45898487/7e50c83d-0b0b-4615-9ffe-3fcbfd71280e)  
-选择指定缩放级别的地图瓦片所在的文件夹，点击拼接。  
+###拼接	
+基于WMTS的切片规则，选择指定缩放级别的地图瓦片所在的文件夹，点击拼接。  
 ![image](https://github.com/hejustbrave/GMapDownloader/assets/45898487/5d9eb486-7d8e-4c13-a49c-b2adfcad2d6f)  
 
 ## 框架及依赖  
