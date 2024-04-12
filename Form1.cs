@@ -95,10 +95,9 @@ namespace HMapLoader_GMap
                 map.HelperLineOption = HelperLineOptions.ShowAlways;//辅助光标十字
                 map.Manager.Mode = AccessMode.ServerOnly;//底图加载模式
                 map.Position = new PointLatLng(23.32, 113.55);
-                map.MapProvider = GMapProviders.AMap;//高德地图
-
+                map.MapProvider = GMapProviders.AMapSatellite;//高德地图
                 map.Overlays.Add(overlay);
-
+                
                 map.OnMapClick += Map_OnMapClick;
                 map.MouseMove += Map_MouseMove;
                 map.OnMapZoomChanged += Map_OnMapZoomChanged;
@@ -107,6 +106,8 @@ namespace HMapLoader_GMap
 
                 tbZoom.Text = map.Zoom.ToString();
                 nudZoom.Value = (int)map.Zoom;
+                cmbMapType.SelectedIndex = 1;
+                cmbMapType.SelectedIndexChanged += cmbMapType_SelectedIndexChanged;
             }
         }
 
@@ -225,6 +226,14 @@ namespace HMapLoader_GMap
                     string zoomPath = $@"{tbCrawlOutput.Text}\{zoom}";
                     if (!Directory.Exists(zoomPath)) { Directory.CreateDirectory(zoomPath); }
 
+                    string crawlUrl = "";
+                    switch (cmbMapType.Text)
+                    {
+                        case "矢量": crawlUrl = "https://webst01.is.autonavi.com/appmaptile?style=7&"; break;
+                        case "影像": crawlUrl = "https://webst01.is.autonavi.com/appmaptile?style=6&"; break;
+                        case "路网": crawlUrl = "https://webst01.is.autonavi.com/appmaptile?style=8&ltype=3&"; break;
+                    }
+
                     for (int row = minRow; row <= maxRow; row++)
                     {
                         string rowPath = $@"{zoomPath}\{row}";
@@ -232,10 +241,9 @@ namespace HMapLoader_GMap
 
                         for (int col = minCol; col <= maxCol; col++)
                         {
-                            string gMapUrl = $"https://webst0{random.Next(1, 4)}.is.autonavi.com/appmaptile?style=6&x={col}&y={row}&z={zoom}";
-                            string gMapRoad = $"https://wprd01.is.autonavi.com/appmaptile?x={col}&y={row}&z={zoom}&lang=zh_cn&size=1&style=8&ltype=3";
+                            string url = crawlUrl + $"&x={col}&y={row}&z={zoom}";
                             // 发送GET请求获取图片内容  
-                            HttpResponseMessage response = await httpClient.GetAsync(gMapRoad);
+                            HttpResponseMessage response = await httpClient.GetAsync(url);
                             response.EnsureSuccessStatusCode(); // 确保请求成功  
                             byte[] imageBytes = await response.Content.ReadAsByteArrayAsync(); // 读取图片内容为字节数组   
                                                                                                // 将图片内容写入本地文件  
@@ -360,6 +368,18 @@ namespace HMapLoader_GMap
             nudCrawlColMax.Value = Math.Max(0, colMax);
             nudCrawlRowMin.Value = Math.Max(0, RowMin);
             nudCrawlRowMax.Value = Math.Max(0, RowMax);
+        }
+
+        private void cmbMapType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (cmbMapType.Text)
+            {
+                case "矢量": map.MapProvider = GMapProviders.AMapVector; break;
+                case "影像": map.MapProvider = GMapProviders.AMapSatellite; break;
+                case "路网": map.MapProvider = GMapProviders.AMapRoad; break;
+            }
+
+            map.ReloadMap();
         }
     }
 

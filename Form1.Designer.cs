@@ -70,6 +70,8 @@ namespace HMapLoader_GMap
             tbCombineOutput = new TextBox();
             label3 = new Label();
             label1 = new Label();
+            cmbMapType = new ComboBox();
+            label12 = new Label();
             gb.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)nudCrawlExtentR).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nudCrawlExtentL).BeginInit();
@@ -96,7 +98,7 @@ namespace HMapLoader_GMap
             chkGrid.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             chkGrid.AutoSize = true;
             chkGrid.BackColor = Color.Transparent;
-            chkGrid.Location = new Point(862, 11);
+            chkGrid.Location = new Point(862, 35);
             chkGrid.Name = "chkGrid";
             chkGrid.Size = new Size(51, 21);
             chkGrid.TabIndex = 4;
@@ -107,7 +109,7 @@ namespace HMapLoader_GMap
             // tbLng
             // 
             tbLng.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            tbLng.Location = new Point(896, 38);
+            tbLng.Location = new Point(896, 60);
             tbLng.Name = "tbLng";
             tbLng.ReadOnly = true;
             tbLng.Size = new Size(143, 23);
@@ -116,7 +118,7 @@ namespace HMapLoader_GMap
             // tbZoom
             // 
             tbZoom.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            tbZoom.Location = new Point(862, 38);
+            tbZoom.Location = new Point(862, 60);
             tbZoom.Name = "tbZoom";
             tbZoom.ReadOnly = true;
             tbZoom.Size = new Size(28, 23);
@@ -125,7 +127,7 @@ namespace HMapLoader_GMap
             // tbLat
             // 
             tbLat.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            tbLat.Location = new Point(1044, 38);
+            tbLat.Location = new Point(1044, 60);
             tbLat.Name = "tbLat";
             tbLat.ReadOnly = true;
             tbLat.Size = new Size(143, 23);
@@ -500,12 +502,35 @@ namespace HMapLoader_GMap
             label1.TabIndex = 20;
             label1.Text = "瓦片路径";
             // 
+            // cmbMapType
+            // 
+            cmbMapType.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            cmbMapType.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbMapType.FormattingEnabled = true;
+            cmbMapType.Items.AddRange(new object[] { "矢量", "影像", "路网" });
+            cmbMapType.Location = new Point(918, 11);
+            cmbMapType.Name = "cmbMapType";
+            cmbMapType.Size = new Size(121, 25);
+            cmbMapType.TabIndex = 16;
+            // 
+            // label12
+            // 
+            label12.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            label12.AutoSize = true;
+            label12.Location = new Point(857, 15);
+            label12.Name = "label12";
+            label12.Size = new Size(56, 17);
+            label12.TabIndex = 17;
+            label12.Text = "地图类型";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.InactiveBorder;
             ClientSize = new Size(1199, 746);
+            Controls.Add(label12);
+            Controls.Add(cmbMapType);
             Controls.Add(groupBox1);
             Controls.Add(chkGrid);
             Controls.Add(tbLng);
@@ -516,7 +541,7 @@ namespace HMapLoader_GMap
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "GMapDownloader";
+            Text = "AMapDownloader";
             WindowState = FormWindowState.Maximized;
             gb.ResumeLayout(false);
             gb.PerformLayout();
@@ -577,5 +602,7 @@ namespace HMapLoader_GMap
         private NumericUpDown nudCrawlExtentU;
         private NumericUpDown nudCrawlExtentR;
         private NumericUpDown nudCrawlExtentL;
+        private ComboBox cmbMapType;
+        private Label label12;
     }
 }
