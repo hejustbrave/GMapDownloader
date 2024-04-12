@@ -5,22 +5,35 @@ VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GMapDownloader", "GMapDownloader.csproj", "{E36BA927-6037-4383-89BE-28DA2E73B6B8}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "GMapDownloader_Setup", "..\GMapDownloader_Setup\GMapDownloader_Setup.vdproj", "{C2711B98-67C0-4840-BB3C-6DFCDEAA27D6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E36BA927-6037-4383-89BE-28DA2E73B6B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E36BA927-6037-4383-89BE-28DA2E73B6B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E36BA927-6037-4383-89BE-28DA2E73B6B8}.Debug|Any CPU.ActiveCfg = Debug|x64
 		{E36BA927-6037-4383-89BE-28DA2E73B6B8}.Debug|x64.ActiveCfg = Debug|x64
 		{E36BA927-6037-4383-89BE-28DA2E73B6B8}.Debug|x64.Build.0 = Debug|x64
-		{E36BA927-6037-4383-89BE-28DA2E73B6B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E36BA927-6037-4383-89BE-28DA2E73B6B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E36BA927-6037-4383-89BE-28DA2E73B6B8}.Debug|x86.ActiveCfg = Debug|x64
+		{E36BA927-6037-4383-89BE-28DA2E73B6B8}.Release|Any CPU.ActiveCfg = Release|x64
 		{E36BA927-6037-4383-89BE-28DA2E73B6B8}.Release|x64.ActiveCfg = Release|x64
 		{E36BA927-6037-4383-89BE-28DA2E73B6B8}.Release|x64.Build.0 = Release|x64
+		{E36BA927-6037-4383-89BE-28DA2E73B6B8}.Release|x86.ActiveCfg = Release|x64
+		{C2711B98-67C0-4840-BB3C-6DFCDEAA27D6}.Debug|Any CPU.ActiveCfg = Debug
+		{C2711B98-67C0-4840-BB3C-6DFCDEAA27D6}.Debug|x64.ActiveCfg = Debug
+		{C2711B98-67C0-4840-BB3C-6DFCDEAA27D6}.Debug|x86.ActiveCfg = Debug
+		{C2711B98-67C0-4840-BB3C-6DFCDEAA27D6}.Debug|x86.Build.0 = Debug
+		{C2711B98-67C0-4840-BB3C-6DFCDEAA27D6}.Release|Any CPU.ActiveCfg = Release
+		{C2711B98-67C0-4840-BB3C-6DFCDEAA27D6}.Release|x64.ActiveCfg = Release
+		{C2711B98-67C0-4840-BB3C-6DFCDEAA27D6}.Release|x64.Build.0 = Release
+		{C2711B98-67C0-4840-BB3C-6DFCDEAA27D6}.Release|x86.ActiveCfg = Release
+		{C2711B98-67C0-4840-BB3C-6DFCDEAA27D6}.Release|x86.Build.0 = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

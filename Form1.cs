@@ -5,6 +5,7 @@ using GMap.NET.WindowsForms;
 using GMap.NET.WindowsForms.Markers;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Net.Http.Headers;
+using System.Windows.Forms.Design;
 
 namespace HMapLoader_GMap
 {
@@ -149,10 +150,10 @@ namespace HMapLoader_GMap
 
                 isDraw = false;
 
-                tbCrawlExtentU.Text = extent.Points[2].Lat.ToString();
-                tbCrawlExtentD.Text = extent.Points[0].Lat.ToString();
-                tbCrawlExtentL.Text = extent.Points[0].Lng.ToString();
-                tbCrawlExtentR.Text = extent.Points[2].Lng.ToString();
+                nudCrawlExtentU.Value = (decimal)extent.Points[2].Lat;
+                nudCrawlExtentD.Value = (decimal)extent.Points[0].Lat;
+                nudCrawlExtentL.Value = (decimal)extent.Points[0].Lng;
+                nudCrawlExtentR.Value = (decimal)extent.Points[2].Lng;
 
                 UpdateTileExtent();
             }
@@ -181,19 +182,18 @@ namespace HMapLoader_GMap
 
             if (overlay.Polygons.Count != 1) { return; }
 
-            var minPixel = map.MapProvider.Projection.FromLatLngToPixel(overlay.Polygons[0].Points[1].Lat, overlay.Polygons[0].Points[1].Lng, (int)nudZoom.Value);
+            var minPixel = map.MapProvider.Projection.FromLatLngToPixel((double)nudCrawlExtentU.Value, (double)nudCrawlExtentL.Value, (int)nudZoom.Value);
             minTile = map.MapProvider.Projection.FromPixelToTileXY(minPixel);
-            var maxPixel = map.MapProvider.Projection.FromLatLngToPixel(overlay.Polygons[0].Points[3].Lat, overlay.Polygons[0].Points[3].Lng, (int)nudZoom.Value);
+            var maxPixel = map.MapProvider.Projection.FromLatLngToPixel((double)nudCrawlExtentD.Value, (double)nudCrawlExtentR.Value, (int)nudZoom.Value);
             maxTile = map.MapProvider.Projection.FromPixelToTileXY(maxPixel);
 
-            tbCrawlRowMin.Text = minTile.Y.ToString();
-            tbCrawlRowMax.Text = maxTile.Y.ToString();
-            tbCrawlColMin.Text = minTile.X.ToString();
-            tbCrawlColMax.Text = maxTile.X.ToString();
+            nudCrawlRowMin.Value = minTile.Y;
+            nudCrawlRowMax.Value = maxTile.Y;
+            nudCrawlColMin.Value = minTile.X;
+            nudCrawlColMax.Value = maxTile.X;
 
-            tbTileCount.Text = ((maxTile.X - minTile.X + 1) * (maxTile.Y - minTile.Y + 1)).ToString();
+            tbTileCount_Update(null, null);
         }
-
 
         private void nudZoom_ValueChanged(object sender, EventArgs e)
         {
@@ -208,10 +208,11 @@ namespace HMapLoader_GMap
                 lbCrawl.Text = "爬取中..";
 
                 int zoom = (int)nudZoom.Value;
-                int minCol = (int)minTile.X;
-                int maxCol = (int)maxTile.X;
-                int minRow = (int)minTile.Y;
-                int maxRow = (int)maxTile.Y;
+                int minCol = (int)nudCrawlColMin.Value;
+                int maxCol = (int)nudCrawlColMax.Value;
+                int minRow = (int)nudCrawlRowMin.Value;
+                int maxRow = (int)nudCrawlRowMax.Value;
+
 
                 using (HttpClient httpClient = new HttpClient())
                 {
@@ -232,9 +233,9 @@ namespace HMapLoader_GMap
                         for (int col = minCol; col <= maxCol; col++)
                         {
                             string gMapUrl = $"https://webst0{random.Next(1, 4)}.is.autonavi.com/appmaptile?style=6&x={col}&y={row}&z={zoom}";
-
+                            string gMapRoad = $"https://wprd01.is.autonavi.com/appmaptile?x={col}&y={row}&z={zoom}&lang=zh_cn&size=1&style=8&ltype=3";
                             // 发送GET请求获取图片内容  
-                            HttpResponseMessage response = await httpClient.GetAsync(gMapUrl);
+                            HttpResponseMessage response = await httpClient.GetAsync(gMapRoad);
                             response.EnsureSuccessStatusCode(); // 确保请求成功  
                             byte[] imageBytes = await response.Content.ReadAsByteArrayAsync(); // 读取图片内容为字节数组   
                                                                                                // 将图片内容写入本地文件  
@@ -258,20 +259,16 @@ namespace HMapLoader_GMap
             try
             {
                 lbCombine.Text = "拼接中";
+                Tile tilesBounds;
 
-                Tile tilesBounds = new Tile
+                tilesBounds = new Tile
                 {
-                    minCol = (int)minTile.X,
-                    maxCol = (int)maxTile.X,
-                    minRow = (int)minTile.Y,
-                    maxRow = (int)maxTile.Y,
-                    zoomLevel = (int)nudZoom.Value
+                    zoomLevel = (int)nudZoom.Value,
+                    minCol = (int)nudCrawlColMin.Value,
+                    maxCol = (int)nudCrawlColMax.Value,
+                    minRow = (int)nudCrawlRowMin.Value,
+                    maxRow = (int)nudCrawlRowMax.Value,
                 };
-
-                //var minTilePixel = map.MapProvider.Projection.FromTileXYToPixel(minTile);
-                //var minTileLatLng = map.MapProvider.Projection.FromPixelToLatLng(minTilePixel.X, minTilePixel.Y, tilesBounds.zoomLevel);
-                //var maxTilePixel = map.MapProvider.Projection.FromTileXYToPixel(new GPoint(maxTile.X + 1, maxTile.Y + 1));
-                //var maxTileLatLng = map.MapProvider.Projection.FromPixelToLatLng(maxTilePixel.X, maxTilePixel.Y, tilesBounds.zoomLevel);
 
                 int rowLength = (tilesBounds.maxRow - tilesBounds.minRow + 1) * 256;
                 int colLength = (tilesBounds.maxCol - tilesBounds.minCol + 1) * 256;
@@ -343,6 +340,26 @@ namespace HMapLoader_GMap
         private void chkGrid_CheckedChanged(object sender, EventArgs e)
         {
             map.ShowTileGridLines = chkGrid.Checked;
+        }
+
+        private void tbTileCount_Update(object sender, EventArgs e)
+        {
+            tbTileCount.Text = ((nudCrawlColMax.Value - nudCrawlColMin.Value + 1) * (nudCrawlRowMax.Value - nudCrawlRowMin.Value + 1)).ToString();
+        }
+
+        private void nudCrawlExtent_ValueChanged(object sender, EventArgs e)
+        {
+            decimal colZ = (decimal)Math.Pow(2, (double)nudZoom.Value);
+            double rowZ = Math.Pow(2, (double)nudZoom.Value - 1);
+            int colMin = (int)Math.Truncate((Math.Min(nudCrawlExtentL.Value, nudCrawlExtentR.Value) + 180) / 360 * colZ);
+            int RowMin = (int)Math.Truncate((1 - Math.Asinh(Math.Tan((double)Math.Max(nudCrawlExtentU.Value, nudCrawlExtentD.Value) * Math.PI / 180)) / Math.PI) * rowZ);
+            int colMax = (int)Math.Truncate((Math.Max(nudCrawlExtentL.Value, nudCrawlExtentR.Value) + 180) / 360 * colZ);
+            int RowMax = (int)Math.Truncate((1 - Math.Asinh(Math.Tan((double)Math.Min(nudCrawlExtentU.Value, nudCrawlExtentD.Value) * Math.PI / 180)) / Math.PI) * rowZ);
+
+            nudCrawlColMin.Value = Math.Max(0, colMin);
+            nudCrawlColMax.Value = Math.Max(0, colMax);
+            nudCrawlRowMin.Value = Math.Max(0, RowMin);
+            nudCrawlRowMax.Value = Math.Max(0, RowMax);
         }
     }
 

@@ -41,26 +41,26 @@ namespace HMapLoader_GMap
             tbCrawlOutput = new TextBox();
             btnCrawlOutput = new Button();
             gb = new GroupBox();
+            nudCrawlExtentR = new NumericUpDown();
+            nudCrawlExtentL = new NumericUpDown();
+            nudCrawlExtentD = new NumericUpDown();
+            nudCrawlExtentU = new NumericUpDown();
+            nudCrawlColMax = new NumericUpDown();
+            nudCrawlColMin = new NumericUpDown();
+            nudCrawlRowMax = new NumericUpDown();
+            nudCrawlRowMin = new NumericUpDown();
             tbTileCount = new TextBox();
             label11 = new Label();
             label10 = new Label();
             label9 = new Label();
-            tbCrawlColMax = new TextBox();
             label8 = new Label();
-            tbCrawlColMin = new TextBox();
-            tbCrawlRowMax = new TextBox();
             label7 = new Label();
             label6 = new Label();
             label5 = new Label();
             label4 = new Label();
-            tbCrawlExtentR = new TextBox();
-            tbCrawlExtentL = new TextBox();
-            tbCrawlExtentD = new TextBox();
             lbCrawl = new Label();
-            tbCrawlRowMin = new TextBox();
             label2 = new Label();
             nudZoom = new NumericUpDown();
-            tbCrawlExtentU = new TextBox();
             btnCombineInput = new Button();
             tbCombineInput = new TextBox();
             lbCombine = new Label();
@@ -71,6 +71,14 @@ namespace HMapLoader_GMap
             label3 = new Label();
             label1 = new Label();
             gb.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)nudCrawlExtentR).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)nudCrawlExtentL).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)nudCrawlExtentD).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)nudCrawlExtentU).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)nudCrawlColMax).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)nudCrawlColMin).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)nudCrawlRowMax).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)nudCrawlRowMin).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nudZoom).BeginInit();
             groupBox1.SuspendLayout();
             SuspendLayout();
@@ -178,26 +186,26 @@ namespace HMapLoader_GMap
             // gb
             // 
             gb.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            gb.Controls.Add(nudCrawlExtentR);
+            gb.Controls.Add(nudCrawlExtentL);
+            gb.Controls.Add(nudCrawlExtentD);
+            gb.Controls.Add(nudCrawlExtentU);
+            gb.Controls.Add(nudCrawlColMax);
+            gb.Controls.Add(nudCrawlColMin);
+            gb.Controls.Add(nudCrawlRowMax);
+            gb.Controls.Add(nudCrawlRowMin);
             gb.Controls.Add(tbTileCount);
             gb.Controls.Add(label11);
             gb.Controls.Add(label10);
             gb.Controls.Add(label9);
-            gb.Controls.Add(tbCrawlColMax);
             gb.Controls.Add(label8);
-            gb.Controls.Add(tbCrawlColMin);
-            gb.Controls.Add(tbCrawlRowMax);
             gb.Controls.Add(label7);
             gb.Controls.Add(label6);
             gb.Controls.Add(label5);
             gb.Controls.Add(label4);
-            gb.Controls.Add(tbCrawlExtentR);
-            gb.Controls.Add(tbCrawlExtentL);
-            gb.Controls.Add(tbCrawlExtentD);
             gb.Controls.Add(lbCrawl);
-            gb.Controls.Add(tbCrawlRowMin);
             gb.Controls.Add(label2);
             gb.Controls.Add(nudZoom);
-            gb.Controls.Add(tbCrawlExtentU);
             gb.Controls.Add(btnCrawlOutput);
             gb.Controls.Add(tbCrawlOutput);
             gb.Controls.Add(btnCrawl);
@@ -209,6 +217,90 @@ namespace HMapLoader_GMap
             gb.TabIndex = 14;
             gb.TabStop = false;
             gb.Text = "爬取";
+            // 
+            // nudCrawlExtentR
+            // 
+            nudCrawlExtentR.DecimalPlaces = 6;
+            nudCrawlExtentR.Increment = new decimal(new int[] { 1, 0, 0, 393216 });
+            nudCrawlExtentR.Location = new Point(220, 101);
+            nudCrawlExtentR.Maximum = new decimal(new int[] { 180, 0, 0, 0 });
+            nudCrawlExtentR.Minimum = new decimal(new int[] { 180, 0, 0, int.MinValue });
+            nudCrawlExtentR.Name = "nudCrawlExtentR";
+            nudCrawlExtentR.Size = new Size(91, 23);
+            nudCrawlExtentR.TabIndex = 39;
+            nudCrawlExtentR.ValueChanged += nudCrawlExtent_ValueChanged;
+            // 
+            // nudCrawlExtentL
+            // 
+            nudCrawlExtentL.DecimalPlaces = 6;
+            nudCrawlExtentL.Increment = new decimal(new int[] { 1, 0, 0, 393216 });
+            nudCrawlExtentL.Location = new Point(86, 101);
+            nudCrawlExtentL.Maximum = new decimal(new int[] { 180, 0, 0, 0 });
+            nudCrawlExtentL.Minimum = new decimal(new int[] { 180, 0, 0, int.MinValue });
+            nudCrawlExtentL.Name = "nudCrawlExtentL";
+            nudCrawlExtentL.Size = new Size(91, 23);
+            nudCrawlExtentL.TabIndex = 38;
+            nudCrawlExtentL.ValueChanged += nudCrawlExtent_ValueChanged;
+            // 
+            // nudCrawlExtentD
+            // 
+            nudCrawlExtentD.DecimalPlaces = 6;
+            nudCrawlExtentD.Increment = new decimal(new int[] { 1, 0, 0, 393216 });
+            nudCrawlExtentD.Location = new Point(146, 130);
+            nudCrawlExtentD.Maximum = new decimal(new int[] { 90, 0, 0, 0 });
+            nudCrawlExtentD.Minimum = new decimal(new int[] { 90, 0, 0, int.MinValue });
+            nudCrawlExtentD.Name = "nudCrawlExtentD";
+            nudCrawlExtentD.Size = new Size(91, 23);
+            nudCrawlExtentD.TabIndex = 37;
+            nudCrawlExtentD.ValueChanged += nudCrawlExtent_ValueChanged;
+            // 
+            // nudCrawlExtentU
+            // 
+            nudCrawlExtentU.DecimalPlaces = 6;
+            nudCrawlExtentU.Increment = new decimal(new int[] { 1, 0, 0, 393216 });
+            nudCrawlExtentU.Location = new Point(146, 72);
+            nudCrawlExtentU.Maximum = new decimal(new int[] { 90, 0, 0, 0 });
+            nudCrawlExtentU.Minimum = new decimal(new int[] { 90, 0, 0, int.MinValue });
+            nudCrawlExtentU.Name = "nudCrawlExtentU";
+            nudCrawlExtentU.Size = new Size(91, 23);
+            nudCrawlExtentU.TabIndex = 36;
+            nudCrawlExtentU.ValueChanged += nudCrawlExtent_ValueChanged;
+            // 
+            // nudCrawlColMax
+            // 
+            nudCrawlColMax.Location = new Point(232, 243);
+            nudCrawlColMax.Maximum = new decimal(new int[] { 0, 16, 0, 0 });
+            nudCrawlColMax.Name = "nudCrawlColMax";
+            nudCrawlColMax.Size = new Size(79, 23);
+            nudCrawlColMax.TabIndex = 35;
+            nudCrawlColMax.ValueChanged += tbTileCount_Update;
+            // 
+            // nudCrawlColMin
+            // 
+            nudCrawlColMin.Location = new Point(124, 243);
+            nudCrawlColMin.Maximum = new decimal(new int[] { 0, 16, 0, 0 });
+            nudCrawlColMin.Name = "nudCrawlColMin";
+            nudCrawlColMin.Size = new Size(79, 23);
+            nudCrawlColMin.TabIndex = 34;
+            nudCrawlColMin.ValueChanged += tbTileCount_Update;
+            // 
+            // nudCrawlRowMax
+            // 
+            nudCrawlRowMax.Location = new Point(232, 215);
+            nudCrawlRowMax.Maximum = new decimal(new int[] { 0, 16, 0, 0 });
+            nudCrawlRowMax.Name = "nudCrawlRowMax";
+            nudCrawlRowMax.Size = new Size(79, 23);
+            nudCrawlRowMax.TabIndex = 33;
+            nudCrawlRowMax.ValueChanged += tbTileCount_Update;
+            // 
+            // nudCrawlRowMin
+            // 
+            nudCrawlRowMin.Location = new Point(124, 215);
+            nudCrawlRowMin.Maximum = new decimal(new int[] { 0, 16, 0, 0 });
+            nudCrawlRowMin.Name = "nudCrawlRowMin";
+            nudCrawlRowMin.Size = new Size(79, 23);
+            nudCrawlRowMin.TabIndex = 32;
+            nudCrawlRowMin.ValueChanged += tbTileCount_Update;
             // 
             // tbTileCount
             // 
@@ -238,7 +330,6 @@ namespace HMapLoader_GMap
             // 
             // label9
             // 
-            label9.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label9.AutoSize = true;
             label9.Location = new Point(65, 245);
             label9.Name = "label9";
@@ -246,51 +337,19 @@ namespace HMapLoader_GMap
             label9.TabIndex = 28;
             label9.Text = "列(Col)";
             // 
-            // tbCrawlColMax
-            // 
-            tbCrawlColMax.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            tbCrawlColMax.Location = new Point(196, 242);
-            tbCrawlColMax.Multiline = true;
-            tbCrawlColMax.Name = "tbCrawlColMax";
-            tbCrawlColMax.ReadOnly = true;
-            tbCrawlColMax.Size = new Size(50, 22);
-            tbCrawlColMax.TabIndex = 27;
-            // 
             // label8
             // 
-            label8.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label8.AutoSize = true;
-            label8.Location = new Point(177, 245);
+            label8.Location = new Point(209, 245);
             label8.Name = "label8";
             label8.Size = new Size(17, 17);
             label8.TabIndex = 26;
             label8.Text = "~";
             // 
-            // tbCrawlColMin
-            // 
-            tbCrawlColMin.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            tbCrawlColMin.Location = new Point(127, 242);
-            tbCrawlColMin.Multiline = true;
-            tbCrawlColMin.Name = "tbCrawlColMin";
-            tbCrawlColMin.ReadOnly = true;
-            tbCrawlColMin.Size = new Size(50, 22);
-            tbCrawlColMin.TabIndex = 25;
-            // 
-            // tbCrawlRowMax
-            // 
-            tbCrawlRowMax.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            tbCrawlRowMax.Location = new Point(196, 214);
-            tbCrawlRowMax.Multiline = true;
-            tbCrawlRowMax.Name = "tbCrawlRowMax";
-            tbCrawlRowMax.ReadOnly = true;
-            tbCrawlRowMax.Size = new Size(50, 22);
-            tbCrawlRowMax.TabIndex = 24;
-            // 
             // label7
             // 
-            label7.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label7.AutoSize = true;
-            label7.Location = new Point(177, 217);
+            label7.Location = new Point(209, 221);
             label7.Name = "label7";
             label7.Size = new Size(17, 17);
             label7.TabIndex = 23;
@@ -298,7 +357,6 @@ namespace HMapLoader_GMap
             // 
             // label6
             // 
-            label6.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             label6.AutoSize = true;
             label6.Location = new Point(65, 217);
             label6.Name = "label6";
@@ -313,70 +371,29 @@ namespace HMapLoader_GMap
             label5.Name = "label5";
             label5.Size = new Size(56, 17);
             label5.TabIndex = 21;
-            label5.Text = "爬取范围";
+            label5.Text = "瓦片范围";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(6, 99);
+            label4.Location = new Point(6, 103);
             label4.Name = "label4";
-            label4.Size = new Size(56, 17);
+            label4.Size = new Size(69, 17);
             label4.TabIndex = 20;
-            label4.Text = "框选范围";
-            // 
-            // tbCrawlExtentR
-            // 
-            tbCrawlExtentR.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            tbCrawlExtentR.Location = new Point(232, 96);
-            tbCrawlExtentR.Multiline = true;
-            tbCrawlExtentR.Name = "tbCrawlExtentR";
-            tbCrawlExtentR.ReadOnly = true;
-            tbCrawlExtentR.Size = new Size(87, 22);
-            tbCrawlExtentR.TabIndex = 19;
-            // 
-            // tbCrawlExtentL
-            // 
-            tbCrawlExtentL.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            tbCrawlExtentL.Location = new Point(68, 96);
-            tbCrawlExtentL.Multiline = true;
-            tbCrawlExtentL.Name = "tbCrawlExtentL";
-            tbCrawlExtentL.ReadOnly = true;
-            tbCrawlExtentL.Size = new Size(87, 22);
-            tbCrawlExtentL.TabIndex = 18;
-            // 
-            // tbCrawlExtentD
-            // 
-            tbCrawlExtentD.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            tbCrawlExtentD.Location = new Point(146, 124);
-            tbCrawlExtentD.Multiline = true;
-            tbCrawlExtentD.Name = "tbCrawlExtentD";
-            tbCrawlExtentD.ReadOnly = true;
-            tbCrawlExtentD.Size = new Size(103, 22);
-            tbCrawlExtentD.TabIndex = 17;
+            label4.Text = "框选范围(°)";
             // 
             // lbCrawl
             // 
-            lbCrawl.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             lbCrawl.AutoSize = true;
             lbCrawl.Location = new Point(146, 304);
             lbCrawl.Name = "lbCrawl";
             lbCrawl.Size = new Size(0, 17);
             lbCrawl.TabIndex = 16;
             // 
-            // tbCrawlRowMin
-            // 
-            tbCrawlRowMin.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            tbCrawlRowMin.Location = new Point(127, 214);
-            tbCrawlRowMin.Multiline = true;
-            tbCrawlRowMin.Name = "tbCrawlRowMin";
-            tbCrawlRowMin.ReadOnly = true;
-            tbCrawlRowMin.Size = new Size(50, 22);
-            tbCrawlRowMin.TabIndex = 14;
-            // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(6, 179);
+            label2.Location = new Point(6, 169);
             label2.Name = "label2";
             label2.Size = new Size(56, 17);
             label2.TabIndex = 13;
@@ -384,22 +401,11 @@ namespace HMapLoader_GMap
             // 
             // nudZoom
             // 
-            nudZoom.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            nudZoom.Location = new Point(68, 177);
+            nudZoom.Location = new Point(68, 167);
             nudZoom.Name = "nudZoom";
             nudZoom.Size = new Size(44, 23);
             nudZoom.TabIndex = 12;
             nudZoom.ValueChanged += nudZoom_ValueChanged;
-            // 
-            // tbCrawlExtentU
-            // 
-            tbCrawlExtentU.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            tbCrawlExtentU.Location = new Point(146, 64);
-            tbCrawlExtentU.Multiline = true;
-            tbCrawlExtentU.Name = "tbCrawlExtentU";
-            tbCrawlExtentU.ReadOnly = true;
-            tbCrawlExtentU.Size = new Size(103, 22);
-            tbCrawlExtentU.TabIndex = 11;
             // 
             // btnCombineInput
             // 
@@ -510,10 +516,18 @@ namespace HMapLoader_GMap
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "HMapLoader_GMap";
+            Text = "GMapDownloader";
             WindowState = FormWindowState.Maximized;
             gb.ResumeLayout(false);
             gb.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)nudCrawlExtentR).EndInit();
+            ((System.ComponentModel.ISupportInitialize)nudCrawlExtentL).EndInit();
+            ((System.ComponentModel.ISupportInitialize)nudCrawlExtentD).EndInit();
+            ((System.ComponentModel.ISupportInitialize)nudCrawlExtentU).EndInit();
+            ((System.ComponentModel.ISupportInitialize)nudCrawlColMax).EndInit();
+            ((System.ComponentModel.ISupportInitialize)nudCrawlColMin).EndInit();
+            ((System.ComponentModel.ISupportInitialize)nudCrawlRowMax).EndInit();
+            ((System.ComponentModel.ISupportInitialize)nudCrawlRowMin).EndInit();
             ((System.ComponentModel.ISupportInitialize)nudZoom).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
@@ -534,10 +548,8 @@ namespace HMapLoader_GMap
         private TextBox tbCrawlOutput;
         private Button btnCrawlOutput;
         private GroupBox gb;
-        private TextBox tbCrawlExtentU;
         private Label label2;
         private NumericUpDown nudZoom;
-        private TextBox tbCrawlRowMin;
         private Button btnCombine;
         private Label lbCrawl;
         private Label lbCombine;
@@ -549,19 +561,21 @@ namespace HMapLoader_GMap
         private TextBox tbCombineOutput;
         private Button btnCombineOutput;
         private Label label4;
-        private TextBox tbCrawlExtentR;
-        private TextBox tbCrawlExtentL;
-        private TextBox tbCrawlExtentD;
         private Label label5;
         private Label label7;
         private Label label6;
         private Label label9;
-        private TextBox tbCrawlColMax;
         private Label label8;
-        private TextBox tbCrawlColMin;
-        private TextBox tbCrawlRowMax;
         private Label label10;
         private TextBox tbTileCount;
         private Label label11;
+        private NumericUpDown nudCrawlColMax;
+        private NumericUpDown nudCrawlColMin;
+        private NumericUpDown nudCrawlRowMax;
+        private NumericUpDown nudCrawlRowMin;
+        private NumericUpDown nudCrawlExtentD;
+        private NumericUpDown nudCrawlExtentU;
+        private NumericUpDown nudCrawlExtentR;
+        private NumericUpDown nudCrawlExtentL;
     }
 }
